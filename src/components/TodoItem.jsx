@@ -2,7 +2,8 @@ import React, { Component } from "react";
 
 class TodoItem extends Component {
   render() {
-    const { title, id } = this.props;
+    const { title, id, handleDelete } = this.props;
+    console.log(handleDelete);
     return (
       <div className="TodoItem">
         <li className="list">
@@ -12,7 +13,7 @@ class TodoItem extends Component {
               <i className="fas fa-pen"></i>
             </span>
             <span>
-              <i className="fas fa-trash"></i>
+              <i className="fas fa-trash" onClick={handleDelete}></i>
             </span>
           </div>
         </li>
