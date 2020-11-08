@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    .App {
+        text-align: center;
+        .row {
+            display: flex;
+            justify-content: center;
+            .row-wrap {
+                display: flex;
+                flex-direction: column;
+                .TodoItem {
+                    display: flex;
+                    padding-bottom: 20px;
+                    form {
+                        display: flex;
+                        flex-direction: column;
+                        .input-group {
+                            padding-bottom: 20px;
+                            display: flex;
+                        }
+                    }
+                }
+                .TodoList {
+                    display: flex;
+                    justify-content: center;
+                    .TodoItem {
+                        display: flex;
+                        padding-top: 20px;
+                    }
+                    .list {
+                        display: flex;
+                        justify-content: space-between;
+                        width: 100%;
+                        .todo-icon {
+                            display: flex;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,25 +1,58 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import TodoInput from "./components/TodoInput";
+import TodoList from "./components/TodoList";
+import uuid from "react-uuid";
+import "./App.scss";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    items: [],
+    id: uuid(),
+    item: "",
+    editItem: false,
+  };
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const newItem = {
+      id: this.state.id,
+      title: this.state.item,
+    };
+    const updatedItems = [...this.state.items, newItem];
+    this.setState({
+      items: updatedItems,
+      item: "",
+      id: uuid(),
+      editItem: false,
+    });
+    console.log(updatedItems, this.state.items);
+  };
+  handleChange = (e) => {
+    this.setState({
+      item: e.target.value,
+    });
+  };
+  clearList = () => {
+    this.setState({
+      items: [],
+    });
+  };
+  render() {
+    return (
+      <div className="App">
+        <div className="row">
+          <div className="row-wrap">
+            <h3> todo input </h3>
+            <TodoInput
+              item={this.state.item}
+              handleChange={this.handleChange}
+              handleSubmit={this.handleSubmit}
+            />
+            <TodoList items={this.state.items} clearList={this.clearList} />
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;
